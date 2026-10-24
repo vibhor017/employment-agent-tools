@@ -1,0 +1,28 @@
+SYNTHETIC JOB DESCRIPTION FOR THE REGRESSION TEST. Northwind Labs is a fictional company; this posting was written for the test and describes no real employer.
+
+Product Manager, Trust and Safety (Remote, Germany)
+
+About Northwind Labs
+Northwind Labs builds a conversational AI assistant used by millions of people. Its safety layer, Northwind Shield, decides which requests are answered and which are refused. We put "safety users never have to think about" at the core of the product.
+
+The role
+You will own the product side of Trust and Safety: the rules, thresholds and release gates that decide what the assistant may say, and the monitoring that proves they hold.
+
+Responsibilities
+- Translate legal and safety requirements into product requirements and acceptance criteria for engineering.
+- Define moderation rules and thresholds, balancing harmful outputs let through against lawful requests wrongly refused.
+- Run adversarial testing and red-team findings through triage, fixes and retesting to closure.
+- Own release gates for AI guardrails and safety features.
+- Set up safety monitoring and quality assurance after launch.
+- Work with engineering, legal, policy and operations as cross-functional delivery.
+- Keep regulatory compliance in view, including the EU AI Act, GDPR and data protection rules.
+
+What we look for
+- Product management experience with AI systems, safety, risk assessment or compliance.
+- Comfort with evaluation data, precision and recall, and false positive rates.
+- Experience writing acceptance criteria and working in Jira and Notion.
+- Familiarity with Python, SQL, Supabase, Vertex AI, Gemini, AWS Bedrock, Cursor or Claude Code.
+- Clear writing for engineers and lawyers alike.
+
+What we offer
+A safety function shaped from the start, remote work in Germany, and direct work with the founders.

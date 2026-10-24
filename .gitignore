@@ -1,0 +1,6 @@
+node_modules/
+tests/sample/out/
+tests/sample/CV.txt
+tests/sample/CL.txt
+__pycache__/
+.DS_Store

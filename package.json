@@ -1,0 +1,12 @@
+{
+  "name": "employment-agent-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "QA gate and document builders for the Employment Agent Claude project",
+  "scripts": {
+    "test": "bash tests/run_smoke.sh"
+  },
+  "dependencies": {
+    "docx": "^9.0.0"
+  }
+}
