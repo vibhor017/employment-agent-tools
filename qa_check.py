@@ -6,6 +6,7 @@ Usage:
   python3 qa_check.py cl  <file> [--jd JD.txt]   # cover letter (.docx, .md or .txt)
   python3 qa_check.py cv  <file> [--jd JD.txt]   # CV
   python3 qa_check.py net <file>                 # networking package or interview prep
+  python3 qa_check.py hm  <file>                 # Hiring Manager Review record (hm_review.md), run before cl/cv
 
 Exit code 0 = PASS, 1 = FAIL (blocking issues found). Warnings never block.
 Checks only what a regex can check. Judgment items (the argument spine, voice,
@@ -17,6 +18,12 @@ MAINTENANCE RULE: this file mirrors CANDIDATE_STRATEGY.md Section 5B and
 APPLICATION_RULES.md Sections 0, 0.2a, 2, 2.5, 11 and 12.6. When either changes, update
 BANNED_CLAIMS, RETIRED_FIGURES, BANNED_PHRASES, HARD_LEXICON, SOFT_LEXICON or
 ENTRY_LINKS here in the same edit, or the gate falls behind the rules.
+
+v1.7, 24 October 2026 (project instructions v9.6):
+- New `hm` mode: checks the Hiring Manager Review record (APPLICATION_RULES.md 8A) that the agent writes to
+  <app_dir>/hm_review.md before the first cl or cv run. FAIL unless items 1-12 each appear once, each with PASS or
+  FAIL and a quoted line from the draft ("..." of 3+ words). WARN on a FAIL item not marked revised. Prints N/12 pass.
+  build_application.js v1.1 refuses to build the .docx files until this file exists.
 
 v1.6, 24 October 2026 (APPLICATION_RULES.md v12.4, CANDIDATE_STRATEGY.md v9.4):
 - Product name: the product is Gyro Health. The old name "Curo" FAILS in cv and cl and WARNS in net; so does
@@ -873,8 +880,48 @@ def check_aoe_and_tools(path, text, fails, warns, jd):
                 warns.append(f"the JD names {t}, a confirmed tool; put it on the Tools line")
 
 
+HM_ITEMS = 12
+HM_LINE = re.compile(r"^\s*(?:[-*]\s*)?(\d{1,2})[.)]\s+(.*)$")
+
+
+def check_hm(path):
+    """The Hiring Manager Review record. One line per rubric item:
+    '<n>. <item name> | PASS or FAIL[, revised] | "quoted line from the draft"'."""
+    fails, warns, seen, passed = [], [], {}, 0
+    for line in normalise(open(path, encoding="utf-8").read()).split("\n"):
+        m = HM_LINE.match(line)
+        if not m:
+            continue
+        n, rest = int(m.group(1)), m.group(2)
+        if not 1 <= n <= HM_ITEMS:
+            continue
+        if n in seen:
+            fails.append(f"item {n} appears twice")
+            continue
+        seen[n] = rest
+        verdict = re.search(r"\b(PASS|FAIL)\b", rest)
+        if not verdict:
+            fails.append(f"item {n}: no PASS or FAIL")
+        elif verdict.group(1) == "PASS":
+            passed += 1
+        elif not re.search(r"revised", rest, re.I):
+            warns.append(f"item {n}: FAIL not marked revised; name it in the decisions log")
+        quote = re.search(r'"([^"]+)"', rest)
+        if not quote or len(quote.group(1).split()) < 3:
+            fails.append(f"item {n}: no quoted line from the draft as evidence (3+ words in double quotes)")
+    missing = [str(i) for i in range(1, HM_ITEMS + 1) if i not in seen]
+    if missing:
+        fails.append(f"rubric items missing: {', '.join(missing)} (APPLICATION_RULES.md 8A has {HM_ITEMS})")
+    print(f"QA HM {path}: {'FAIL' if fails else 'PASS'} ({passed}/{HM_ITEMS} pass)")
+    for f in fails: print(f"  FAIL  {f}")
+    for w in warns: print(f"  WARN  {w}")
+    sys.exit(1 if fails else 0)
+
+
 def main():
     args = sys.argv[1:]
+    if len(args) == 2 and args[0] == "hm":
+        check_hm(args[1])
     jd_path = None
     if "--jd" in args:
         k = args.index("--jd")

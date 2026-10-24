@@ -1,0 +1,13 @@
+# HM review: Northwind Labs (fixture)
+1. Thesis | PASS | "the fixture letter states its thesis in Para 1"
+2. Intel earns its place | PASS | "each company line is followed by evidence"
+3. Responsibility coverage | PASS | "top responsibilities are argued in the letter"
+4. Forward move | PASS | "In this role I would set the bar"
+5. Why this role | PASS | "names the specific thing this company has"
+6. Close and why this company | PASS | "returns to the thesis in Para 1 words"
+7. Flow | PASS | "each paragraph hands off to the next"
+8. Cold reader | PASS | "every bullet reads in one pass"
+9. Honesty | PASS | "every figure matches the master CV"
+10. Six-second CV skim | PASS | "headline and summary land at once"
+11. Human voice | FAIL, revised | "one stated view a reader could dispute"
+12. Hook impact | PASS | "the opening is from the reader's world"

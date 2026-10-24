@@ -12,6 +12,7 @@ check() { # mode file
   echo "$out" | tail -1
   echo "$out" | grep -q '^QA .*: PASS$' || fail=1
 }
+out=$(python3 qa_check.py hm "$T/hm_review.md" || true); echo "$out" | head -1; echo "$out" | grep -q "^QA HM .*: PASS" || fail=1
 check cv "$T/CV.txt"; for f in "$T"/out/*_CV.docx; do check cv "$f"; done
 check cl "$T/CL.txt"; for f in "$T"/out/*_CL.docx; do check cl "$f"; done
 [ $fail -eq 0 ] && echo "SMOKE TEST: PASS" || { echo "SMOKE TEST: FAIL"; exit 1; }

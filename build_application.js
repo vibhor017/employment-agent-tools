@@ -1,5 +1,9 @@
 /**
- * build_application.js v1.0, 24 October 2026
+ * build_application.js v1.1, 24 October 2026
+ * v1.1: checks the letter against its word band before writing anything the QA gate reads further (exit 3 when the
+ *   total is outside the band; per-paragraph budgets print as warnings), and refuses `docx` until
+ *   <app_dir>/hm_review.md exists (exit 4), so the Hiring Manager Review always precedes the final build.
+ * v1.0, 24 October 2026
  * One data folder in, the QA drafts and both .docx files out. Uses cv_template_builder.js v4.2 and
  * cl_template_builder.js v1.2 from the same folder as this script, unchanged.
  *
@@ -83,15 +87,38 @@ function clText(d) {
     d.salutation || "Dear Hiring Team,", "", paras.join("\n\n"), "", d.signoff || "Warm regards,", d.signature || d.header.name].join("\n");
 }
 
-// ---- word counts, printed so budgets are checked before the first QA run ----
+// ---- word counts and budgets, checked here so an over-length draft never reaches the first QA run ----
+// Mirrors qa_check.py CL_BUDGETS / CL_BUDGETS_TABLE and the bands (APPLICATION_RULES.md Sections 2 and 2.5).
+const BUDGETS = { prose: [[95, 120], [115, 140], [105, 125], [40, 60]], table: [[85, 110], [95, 125], [80, 115], [35, 55]] };
+const BANDS = { prose: [360, 400], table: [300, 360] };
 function words(s) { return (s.match(/[A-Za-z0-9][A-Za-z0-9'%+.,\/-]*/g) || []).length; }
 const plain = cl.paragraphs.map(p => (typeof p === "string" ? p : [p.lead, ...p.rows.flat(), p.after].join(" ")));
 const counts = plain.map(words);
 const isTable = cl.paragraphs.some(p => typeof p !== "string");
+const fmt = isTable ? "table" : "prose";
+const total = counts.reduce((a, b) => a + b, 0);
+const [lo, hi] = BANDS[fmt];
+const paraNotes = counts.map((n, i) => {
+  const [a, b] = BUDGETS[fmt][i] || [0, Infinity];
+  return n < a ? `P${i + 1} ${n} (under ${a})` : n > b ? `P${i + 1} ${n} (over ${b})` : null;
+}).filter(Boolean);
+const bandOk = total >= lo && total <= hi && counts.length === 4;
 
 fs.writeFileSync(path.join(DRAFT_DIR, "CV.txt"), cvText(cv));
 fs.writeFileSync(path.join(DRAFT_DIR, "CL.txt"), clText(cl));
-console.log(`drafts written | letter (${isTable ? "evidence table" : "prose"}): paras ${counts.join("/")}, total ${counts.reduce((a, b) => a + b, 0)}`);
+console.log(`drafts written | letter (${isTable ? "evidence table" : "prose"}): paras ${counts.join("/")}, total ${total}`);
+if (paraNotes.length) console.log(`  budget WARN: ${paraNotes.join(", ")}`);
+if (!bandOk) {
+  console.log(`  BUDGET FAIL: total ${total}, band ${lo}-${hi}${counts.length !== 4 ? `, ${counts.length} paragraphs (need 4)` : ""}. Fix cl_data.js before running qa_check.py.`);
+  process.exit(3);
+}
+
+// The Hiring Manager Review (APPLICATION_RULES.md 8A) is written to <app_dir>/hm_review.md and checked with
+// `qa_check.py hm` before any .docx is built.
+if (wantDocx && !fs.existsSync(path.join(appDir, "hm_review.md"))) {
+  console.log("  HM REVIEW MISSING: write hm_review.md in the app folder and pass `qa_check.py hm` before building the .docx files.");
+  process.exit(4);
+}
 
 if (wantDocx) {
   const out = path.join(appDir, "out");
