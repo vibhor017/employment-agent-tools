@@ -1,0 +1,83 @@
+Vibhor Ahlawat
+Trust and Safety Product Manager  |  AI Guardrails and Safety Testing  |  Legal Requirements to Product
+Berlin, DE  ·  +49 1622801918  ·  vibhorahlawat17@gmail.com  ·  linkedin.com/in/vibhorahlawat  ·  Portfolio: vibhor.work
+English (C2)  ·  German (A2, working towards B1)  ·  Hindi (C2)  ·  French (B1)
+
+PROFILE SUMMARY
+AI safety product manager who turns legal and safety requirements into acceptance criteria, with 5+ years across law, government delivery and product. Held an AI feature from release until false patterns fell from 68% to 3% in simulation. Built Gyro Health's fail-closed output filter and an AI-disclosure label aligned to the EU AI Act.
+
+AREAS OF EXPERTISE
+Safety and Legal Product Requirements | Moderation Rules and Thresholds | AI Guardrails
+Adversarial Testing and Release Gates | Regulatory Compliance (EU AI Act, DPDP Act, GDPR) | Acceptance Criteria
+Safety Monitoring and Quality Assurance | Risk Assessment | Cross-Functional Delivery
+Tools: Claude Code, Cursor, Vertex AI, Gemini, AWS Bedrock, Supabase, SQL, Python, Jira, Notion
+
+KEY ACHIEVEMENTS
+- Legal requirements as engineering rules: Locked 2 of 38 product decisions as rules (the intended-use boundary and the Insurance Firewall), with 6 consents, 9 kill switches and India-only storage specified under the DPDP Act.
+- Detection thresholds tested against ground truth: Built an evaluation harness showing autocorrelated data broke the pattern engine's significance test, then rebuilt the test to cut false positives from 19.5% to 1.0% in simulation.
+- Adversarial findings held to closure: Assessed AI validation findings by risk on an S0-S4 severity scale; 4 top-severity (S1) findings blocked release until each was fixed.
+- Quality monitoring at population scale: As project lead on a 3M+ user state grievance platform, owned post-launch quality monitoring while the team moved case closure under independent central oversight; average days to closure fell 28%.
+
+PROFESSIONAL EXPERIENCE
+
+Gyro Health, Care Companion for Long-Term Conditions	Berlin, DE
+Technical Product Lead and Founder	Feb 2026 - Present
+- Leads product on Gyro Health, a pre-launch AI care companion for people with epilepsy and migraine in India, owning discovery, safety requirements, the regulatory path and the pattern engine, built solo with AI coding agents.
+- Wrote acceptance criteria for the pattern engine before any user data (targets: at most 5% false findings, at least 60% detection), then rejected a shortcut that measured 33-67% false patterns in simulation.
+- Made AI guardrails structural: outputs with no free-text field, and a fail-closed moderation filter on AI-written answers, hardened against adversarial evasion (zero-width and homoglyph characters) and proven by a live stub.
+- Reviewed the AI assistant for foreseeable misuse before build, rejecting live web retrieval as a prompt-injection channel and limiting answers to reviewed, cited cards in Hindi and English.
+- Made an AI-disclosure label mandatory for every AI-written answer, aligned to EU AI Act Article 50, and set a red-team release gate (target): 100 prompts per language per condition, zero escapes.
+
+Independent Advisory Practice, Data Protection and Technology	Remote, IN and EU
+Independent Advisor	Nov 2023 - Present
+- Advises 30+ technology companies and law firms across Indian and EU markets on data protection, technology contracts and cross-border market entry.
+- Advises Indian technology companies operating in the EU on what GDPR requires in practice.
+
+Indian Political Action Committee (IPAC) Consulting Pvt. Ltd.	Hyderabad, IN
+Consultant and Project Lead, Public Sector	Jan 2022 - Apr 2023
+- As project lead on a 3M+ user state grievance platform, coordinated cross-functional delivery across engineering, UX and policy while the team rebuilt requirements around independent oversight of case closure.
+- Owned post-launch quality monitoring on the mobile app and IVR channels; when drop-off appeared before case registration, the team added multi-language support and fast-tracked callers to a human.
+- Directed a 25-person research team to collect and code 1.5M survey data points, with data quality held by a codebook, training workshops, a pilot batch and spot-checks; the analysis set roadmap priorities.
+
+Outsay Legal, Advocates and Consultants	New Delhi, IN
+Legal Associate, Constitutional Law and Public Policy	Jun 2019 - Aug 2021
+- Researched and prepared 200+ cases before the Supreme Court of India, the Delhi High Court and tribunals, making submissions in some and assisting senior counsel in others, isolating procedural edge cases.
+- Drafted 14 advisory reports translating data protection and environmental legislation into data governance frameworks adopted by state committees.
+
+Khaitan & Co. | Shardul Amarchand Mangaldas & Co. | 4 Further Legal Practices	New Delhi, IN
+Legal Intern, Compliance, Corporate Law, Policy and Litigation	Aug 2018 - Nov 2018
+- Completed 6 legal internships across compliance, corporate law, policy and litigation, including case-law research and dispute-resolution support at Khaitan & Co.
+- Delivered policy advisory on government service delivery at SAM & Co., alongside 4 placements across state prosecution and private litigation.
+
+SIDE PROJECTS
+
+Haqdaar v1, AI Legal Rights Assistant	India / Cloud
+Solo Build, Google Gen AI Academy APAC, Track 1	Apr 2026
+Problem: India's 12M+ gig workers gained legal rights under the Code on Social Security 2020 with no accessible way to act on them.
+Solution: Built an AI legal assistant that answers only from verified legal sources and refers everything else to a legal helpline, live on a public API (Google ADK, Gemini). Now narrowing to Lok Adalat dispute routing.
+
+Beamer Held, Dormitory Booking System	Berlin, DE
+Solo Build, Theologisches Konvikt Berlin	Mar 2025 - Sep 2025
+Problem: 109 residents were booking a shared projector over WhatsApp, causing weekly double-bookings and lost inventory.
+Solution: Shipped a mobile-first booking web app with conflict detection and no login, which replaced the group chat; dorm leadership then requested a rollout across 4 offices, now a separate build in progress.
+
+CERTIFICATIONS
+- AI Product Management Professional Certificate, IBM	2026
+- Google Cloud Gen AI Master Certificate, Google Academy APAC	2026
+- Product Analytics Certification, Product School and Mixpanel	2026
+- Machine Learning Specialization (Andrew Ng), DeepLearning.AI	2025
+- Advanced SQL, Kaggle Learn (Google) and HackerRank	2025
+- Certificate in Digital Governance, Hertie School Berlin	2026
+
+EDUCATION
+
+Hertie School	Berlin, DE
+Master of Public Policy (MPP)	Sep 2023 - May 2026
+Specialisation: AI Governance and Digital Transformation; Management and Organisation.
+Thesis: “From Guarantee to Guardrail: Measuring How India's AI Governance Framework Operationalising Constitutional Equality”, a 15-indicator evaluation framework across EU and Indian regulatory contexts.
+
+Faculty of Law, University of Delhi	New Delhi, IN
+Bachelor of Laws (LL.B.)	Aug 2016 - Jun 2019
+
+Shaheed Bhagat Singh College, University of Delhi	New Delhi, IN
+Bachelor of Arts (Hons), Political Science	Aug 2013 - Jun 2016

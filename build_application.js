@@ -1,5 +1,7 @@
 /**
- * build_application.js v1.1, 24 October 2026
+ * build_application.js v1.2, 30 October 2026
+ * v1.2: exits 5 (UNTAILORED) while any field written by master_to_skeleton.js / init_app.js --track still carries the
+ *   TAILOR marker, in cv_data.js, cl_data.js, meta.json or (with `docx`) hm_review.md.
  * v1.1: checks the letter against its word band before writing anything the QA gate reads further (exit 3 when the
  *   total is outside the band; per-paragraph budgets print as warnings), and refuses `docx` until
  *   <app_dir>/hm_review.md exists (exit 4), so the Hiring Manager Review always precedes the final build.
@@ -32,6 +34,22 @@ const DRAFT_DIR = process.env.DRAFT_DIR || "/home/claude";
 const cv = require(path.join(appDir, "cv_data.js")).data;
 const cl = require(path.join(appDir, "cl_data.js")).data;
 const meta = JSON.parse(fs.readFileSync(path.join(appDir, "meta.json"), "utf8"));
+
+// ---- untailored-default gate (v1.2): a skeleton field marked with the TAILOR marker must be rewritten before any build ----
+const MARKER = "⟦";
+function findMarkers(v, p, acc) {
+  if (typeof v === "string") { if (v.includes(MARKER)) acc.push(p); }
+  else if (Array.isArray(v)) v.forEach((x, i) => findMarkers(x, `${p}[${i}]`, acc));
+  else if (v && typeof v === "object") Object.keys(v).forEach((k) => findMarkers(v[k], p ? `${p}.${k}` : k, acc));
+  return acc;
+}
+const untailored = [...findMarkers(cv, "cv", []), ...findMarkers(cl, "cl", []), ...findMarkers(meta, "meta", [])];
+const hmFile = path.join(appDir, "hm_review.md");
+if (wantDocx && fs.existsSync(hmFile) && fs.readFileSync(hmFile, "utf8").includes(MARKER)) untailored.push("hm_review.md");
+if (untailored.length) {
+  console.log(`UNTAILORED: ${untailored.length} field(s) still carry the TAILOR marker: ${untailored.slice(0, 12).join(", ")}${untailored.length > 12 ? ", ..." : ""}`);
+  process.exit(5);
+}
 
 // ---- CV.txt, in the layout qa_check.py reads ----
 function cvText(d) {

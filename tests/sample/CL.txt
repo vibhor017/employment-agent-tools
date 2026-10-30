@@ -1,0 +1,22 @@
+Vibhor Ahlawat
+Technical Product Lead, AI and Data Platforms  |  Google Gen AI Master · IBM AI PM · MPP and LL.B.
+Berlin, Germany  ·  +49 1622801918  ·  vibhorahlawat17@gmail.com
+
+24 October 2026
+
+Hiring Team, Product
+Northwind Labs
+Remote, Germany
+
+Dear Hiring Team,
+
+On an AI assistant, every Northwind Shield threshold has two error rates: the harm it lets through and the lawful request it blocks. Most safety work only measures the first. I have written release gates with both numbers in them. On Gyro Health, the AI health app I am building, I held the AI feature back until a ground-truth harness showed false patterns down from 68% to 3% in simulation. I didn't loosen the bar to get there. Setting thresholds like that, then proving they hold under deliberate misuse, is the core of this Trust and Safety Product Manager role.
+
+Holding the bar is the same method I've used everywhere: find where a rule-bound system fails under pressure, then rebuild the requirements from there. In appellate litigation, that meant isolating procedural edge cases under time pressure. At IPAC, I was project lead and owned post-launch quality monitoring on a 3M+ user grievance platform; the team rebuilt its requirements, and average days to case closure fell 28%. Gyro Health, the health app I founded, is early stage and pre-revenue, and I have built it myself with AI coding agents. Its safeguards have only been tested in simulation. Some of Northwind Labs' millions of users test Northwind Shield every day, and this role shapes its safety function from the start. I want to own those thresholds while real adversaries test them.
+
+Real adversaries leave findings, and the role wants each one tracked through retesting to closure. Closure is the claim that needs checking. On Gyro Health, I let four top-severity findings block release until each was fixed. When two validation studies reported a perfect 0/200 because they could never surface anything, I made the harness fail whenever it measures nothing. On CMGRS, that same grievance platform, the team stopped letting departments close their own cases and routed closure through central oversight (vibhor.work/project/cmgrs). In this role I'd run each Northwind Shield finding as a case only a retest can close. I would score it against a labelled set of lawful and unlawful prompts, and judge it by harmful outputs that escape and lawful requests wrongly refused.
+
+Two error rates, both measured, and a bar nobody loosens to hit a launch date. Northwind Labs puts “safety users never have to think about” at the core, and building that quiet safety while keeping lawful requests answered is the work I want next.
+
+Warm regards,
+Vibhor Ahlawat
