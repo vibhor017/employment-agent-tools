@@ -12,7 +12,8 @@ Code for the Employment Agent Claude project. This repository is the single sour
 | run_all.js | v1.0 | The whole mechanical gate in one command: `node run_all.js [app_dir] [--no-docx]`. Build, hm check, cv and cl checks on the drafts, docx build, checks on both .docx, and the net check once NET.md exists. Prints word counts, only FAIL and WARN lines, a tailoring line, and one `RUN_ALL: PASS/FAIL` line |
 | master_to_skeleton.js | v1.0 | `node master_to_skeleton.js <master.md> <track> <out_dir>` turns a master CV into the default cv_data.js for one track. Regenerate `skeletons/<track>/` after any master CV change |
 | skeletons/ | | Default cv_data.js per track (A, B, C, D, E), cl_data.template.js, hm_review.template.md |
-| docs_from_transcript.js | v1.0 | Maintenance helper: saves project documents read in a session to disk from the transcript |
+| docs_from_transcript.js | v1.1 | Saves project documents read in a session to disk from the transcript (`node docs_from_transcript.js /home/claude/docs`), and with `--section <file> "<heading>"` prints one section, so no step re-reads a whole document |
+| docs/CV_LAYOUT.md | | The CV visual spec the builder implements (moved out of APPLICATION_RULES.md 11.4); for maintenance only |
 | cv_template_example_data.js, cl_template_example_data.js | | Reference shapes only; the agent does not read them during an application |
 | tests/ | | Regression fixture and `run_smoke.sh` |
 
