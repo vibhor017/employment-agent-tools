@@ -1,0 +1,13 @@
+{
+  "track": "Technical PM-FDE (Track D)",
+  "sub_archetype": "D2",
+  "fit": "Strong",
+  "deadline": null,
+  "hm_name": "[NAME PLACEHOLDER]",
+  "positioning": "Track D2 | H2 Market or user moment | Gyro Health FDR gate | thesis: thresholds before features",
+  "jd_requirements": ["Own policy thresholds for AI moderation", "Work with engineering on classifier launches"],
+  "outcome_notes": "JD gives no deadline. Objection 7 not raised. Founder disclosure in Para 2.",
+  "peers": ["[NAME PLACEHOLDER] Senior PM, Trust and Safety", "[NAME PLACEHOLDER] Staff Engineer"],
+  "cl_format": "Prose",
+  "hook_type": "H2 Market or user moment"
+}

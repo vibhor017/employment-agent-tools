@@ -1,0 +1,70 @@
+{
+  "instructions_version": "v9.8",
+  "instructions_date": "30 October 2026",
+  "files": {
+    "CANDIDATE_STRATEGY.md": {
+      "sha256": "c9fc53d426c744fd2a063da1ebebb0556a81e81051963afd2ef5bddea885d568",
+      "bytes": 114699
+    },
+    "APPLICATION_RULES.md": {
+      "sha256": "fd07d9bf00784bcd5befb52946bc8b133bfc49d019e1f31274693c8cf27d2557",
+      "bytes": 97281
+    },
+    "PORTFOLIO_DOSSIER.md": {
+      "sha256": "0d42327ab6363b9c4d43232eabb0e0bc290ea07edd8ba7aedaa9ff86ec1c79c6",
+      "bytes": 21099
+    },
+    "PORTFOLIO_ENTRIES.md": {
+      "sha256": "ce8df3f8ab9fc9917bdcee469c4e25fb9e3fbb98a7c4fdbb598cbc905a767b94",
+      "bytes": 1675
+    },
+    "PM_MASTER_CV.md": {
+      "sha256": "75ff6c49189b861cbdf44541844975b7b7175c0394ca7a1a22f4bbad923418f6",
+      "bytes": 26669
+    },
+    "POLICY_MASTER_CV.md": {
+      "sha256": "6791cd5473c0a91ccb23ce4493e92ec9c599336c7c79ea14f95a4e788b2c4a22",
+      "bytes": 18963
+    },
+    "TECH_PM_MASTER_CV.md": {
+      "sha256": "c5ad74b5070a6d71c9e14d79e3e938ae9cef2a314168667950c199f20af86e7d",
+      "bytes": 23523
+    },
+    "portfolio/1-gyro-health.md": {
+      "sha256": "b68e45c849df617d519095b89c0e094e6d516cc651de44c57ef3ada9ddd73e1c",
+      "bytes": 10163
+    },
+    "portfolio/2-cmgrs.md": {
+      "sha256": "6a7e336b0499f412f7a2b56e3b16c808bc881f7ffbe22228bb5f2805ed6153c4",
+      "bytes": 5513
+    },
+    "portfolio/3-rasahub.md": {
+      "sha256": "42140fa3c75bdf6babf88af1e6cf0293fea63d8a476a293d3c2a8d54fd8ad128",
+      "bytes": 7418
+    },
+    "portfolio/4-haqdaar.md": {
+      "sha256": "e31795e0df929b3fda57aee0e799c937f61a24767fb562499122680967d16fe1",
+      "bytes": 7074
+    },
+    "portfolio/5-beamerheld.md": {
+      "sha256": "d4dfc77acb513cfc883b972e4d4457258d2ae0cccce2dc88fe840d6cb0bf2140",
+      "bytes": 4897
+    },
+    "portfolio/6-typecast.md": {
+      "sha256": "1c39e9ad48169cd1e375afa7de055a7e783c25d6c73c58123998ff674f28763f",
+      "bytes": 5506
+    },
+    "portfolio/7-commonstrace.md": {
+      "sha256": "f8307482193ce6650eb2bbaf86c5ad818622ffaa4e65f212b4e387536f715ea7",
+      "bytes": 6473
+    },
+    "portfolio/8-umang-app.md": {
+      "sha256": "38a3ef278f1fff0010756004f48dd8e048102464c2928004b3a00d221380c04d",
+      "bytes": 461
+    },
+    "portfolio/evidence-inventory.md": {
+      "sha256": "34769929d0b22c54ef1674d3bd960e02a9061150400c3667b68fbd9a9177d33e",
+      "bytes": 1379
+    }
+  }
+}
