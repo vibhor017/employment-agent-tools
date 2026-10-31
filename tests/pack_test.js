@@ -16,10 +16,11 @@ const bad = (m) => { fails++; console.log("FAIL: " + m); };
 
 const AR_H = ["## SECTION 0: THE PRE-WRITE GATE (READ FIRST, APPLY TO EVERY ARTEFACT)", "## SECTION 2: COVER LETTER ARCHITECTURE",
   "### 2.5 Format choice: prose or evidence table", "## SECTION 7: FORMATTING (COVER LETTER)", "## SECTION 8A: HIRING MANAGER REVIEW (runs before qa_check.py)",
-  "## SECTION 11: CV CUSTOMISATION RULES", "## SECTION 15: THE ROLE BRIEF (built in Step 3)", "### 0.2a The AI-isms lexicon"];
+  "## SECTION 10: ANCHOR CLAIMS AND SUPPRESSION", "## SECTION 11: CV CUSTOMISATION RULES", "## SECTION 15: THE ROLE BRIEF (built in Step 3)", "### 0.2a The AI-isms lexicon"];
 const CS_COMMON = ["## SECTION 1: IDENTITY NARRATIVE", "## SECTION 4: KNOWN OBJECTIONS AND BRIDGES",
   "### Objection 2: Indian national in Berlin, work authorisation",
   "### Objection 7: he is an active founder, will he leave in six months (the highest-frequency silent rejection)",
+  "### Exclusion rules, all tracks", "## SECTION 6: TRACK-SPECIFIC DO NOT INCLUDE", "## SECTION 7: ADDITIONAL EVIDENCE POOL",
   "## SECTION 5A: METRIC BANK (USE FOR EVERY KEY ACHIEVEMENT)", "### 5B. CLAIMS THAT MUST NOT BE MADE", "## SECTION 7A: STORY BANK (new in v9.4)",
   "## SECTION 9: GAP MITIGATION LIBRARY", "## SECTION 9B: AREAS OF EXPERTISE ECHO MAP, GAP COVERAGE AND CONFIRMED TOOLS"];
 const PD_H = ["## Honesty rules (read before drafting anything)", "## Quick index"];

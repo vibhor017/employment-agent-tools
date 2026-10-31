@@ -23,7 +23,7 @@ const AR = "APPLICATION_RULES.md", CS = "CANDIDATE_STRATEGY.md", PD = "PORTFOLIO
 // ---- manifest -------------------------------------------------------------------------------------------------------
 const AR_SECTIONS = [
   "SECTION 0: THE PRE-WRITE GATE", "SECTION 2: COVER LETTER ARCHITECTURE", "SECTION 7: FORMATTING (COVER LETTER)",
-  "SECTION 8A: HIRING MANAGER REVIEW", "SECTION 11: CV CUSTOMISATION RULES", "SECTION 15: THE ROLE BRIEF",
+  "SECTION 8A: HIRING MANAGER REVIEW", "SECTION 10: ANCHOR CLAIMS AND SUPPRESSION", "SECTION 11: CV CUSTOMISATION RULES", "SECTION 15: THE ROLE BRIEF",
 ];
 const CS_TRACK_DIFF = {
   A: "Track A, Product Manager: Digital Health and AI", B: "Track B, Tech Policy and AI Governance",
@@ -34,7 +34,8 @@ const CS_TRACK_SCREEN = {
   A: "Track A, PM hiring manager", B: "Track B, policy hiring manager", C: "Track C, digitalisation hiring manager",
   D: "Track D, technical PM and FDE hiring manager", E: "Track E, consumer and general PM hiring manager",
 };
-const CS_COMMON = ["SECTION 4: KNOWN OBJECTIONS AND BRIDGES", "SECTION 5A: METRIC BANK", "SECTION 7A: STORY BANK",
+const CS_COMMON = ["SECTION 4: KNOWN OBJECTIONS AND BRIDGES", "SECTION 5A: METRIC BANK", "SECTION 6: TRACK-SPECIFIC DO NOT INCLUDE",
+  "SECTION 7: ADDITIONAL EVIDENCE POOL", "SECTION 7A: STORY BANK",
   "SECTION 9: GAP MITIGATION LIBRARY", "SECTION 9B: AREAS OF EXPERTISE ECHO MAP"];
 const ROUTE_ROWS = {
   A: ["| A2, ", "| A1 / A3, "], B: ["| B, "], C: ["| C, digitalisation", "| C, India"], D: ["| D1, ", "| D2, ", "| D3, "],
@@ -76,6 +77,7 @@ function buildBlocks(track, entriesOpt, also = []) {
   const ar = read(AR), cs = read(CS), pd = read(PD);
   for (const p of AR_SECTIONS) sec(AR, ar, { prefix: p });
   sec(CS, cs, { prefix: "SECTION 1: IDENTITY NARRATIVE" });
+  sec(CS, cs, { prefix: "Exclusion rules, all tracks", level: 3, within: "SECTION 2: TRACK DIFFERENTIATION" });
   sec(CS, cs, { prefix: CS_TRACK_DIFF[track], level: 3, within: "SECTION 2: TRACK DIFFERENTIATION" });
   sec(CS, cs, { prefix: CS_TRACK_SCREEN[track], level: 3, within: "SECTION 3: HIRING MANAGER EXPECTATIONS" });
   for (const p of CS_COMMON) sec(CS, cs, { prefix: p });
