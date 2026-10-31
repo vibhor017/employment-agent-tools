@@ -31,4 +31,8 @@ for tr in A B C D E; do
   rm -rf "$S"
 done
 echo "scaffolds A-E checked"
+
+# Run pack: every track, allow-list, byte equality with docs/
+node tests/pack_test.js || fail=1
+node tests/log_test.js || fail=1
 [ $fail -eq 0 ] && echo "SMOKE TEST: PASS" || { echo "SMOKE TEST: FAIL"; exit 1; }

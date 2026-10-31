@@ -1,5 +1,5 @@
 /**
- * init_app.js v1.1, 30 October 2026
+ * init_app.js v1.2, 31 October 2026
  * Step 1 setup in one call, so nothing is retyped and nothing is installed twice.
  *
  * USAGE
@@ -18,10 +18,14 @@
  *   4. With --track: writes cv_data.js, cl_data.js, meta.json and hm_review.md into app_dir. Fields the Role Brief
  *      must rewrite carry the TAILOR marker; build_application.js exits 5 until every marker is gone. Existing files in
  *      app_dir are never overwritten (pass --force to replace them).
+ *   5. v1.2: with --track, builds the run pack ($DRAFT_DIR/pack/run_pack.md, default /home/claude/pack) with build_run_pack.js and
+ *      prints only its path and the word-count report. If the pack cannot be built (docs/ stale or a heading renamed) the scaffold is
+ *      kept, the reason is printed and the exit code is 6: use `node build_run_pack.js <track> <jd> --full` as the fallback.
+ *      meta.json also records company and role (used by log_application.js).
  */
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
+const { execSync, spawnSync } = require("child_process");
 
 const argv = process.argv.slice(2);
 const flag = (name) => { const i = argv.indexOf(name); return i >= 0 ? argv[i + 1] : undefined; };
@@ -76,7 +80,7 @@ if (track) {
   const files = {
     "cv_data.js": fs.readFileSync(path.join(sk, track, "cv_data.js"), "utf8"),
     "cl_data.js": fs.readFileSync(path.join(sk, "cl_data.template.js"), "utf8").replace("{{TITLE}}", TITLES[track]).replace("{{DATE}}", long),
-    "meta.json": JSON.stringify({ base, track }, null, 0) + "\n",
+    "meta.json": JSON.stringify(flag("--company") && flag("--role") ? { base, track, company: flag("--company"), role: flag("--role") } : { base, track }, null, 0) + "\n",
     "hm_review.md": fs.readFileSync(path.join(sk, "hm_review.template.md"), "utf8")
   };
   const written = [], kept = [];
@@ -88,3 +92,12 @@ if (track) {
   if (base.includes("⟦")) msg += " | meta.json base still needs the company and role (YYYYMMDDCompany_RoleTitle)";
 }
 console.log(msg);
+
+if (track) {
+  const packDir = path.join(draftDir, "pack");
+  const r = spawnSync(process.execPath, [path.join(__dirname, "build_run_pack.js"), track, jd, "--out", packDir], { stdio: "inherit" });
+  if (r.status !== 0) {
+    console.error(`run pack NOT built (exit ${r.status}). The scaffold in ${appDir} is intact. Fallback: node ${path.join(__dirname, "build_run_pack.js")} ${track} ${jd} --full --out ${packDir}`);
+    process.exit(6);
+  }
+}
